@@ -1,0 +1,81 @@
+specVersion: 0.0.5
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: Unipeer
+    network: goerli
+    source:
+      address: "0xd56e8f3c7731f6e0d85a47de55926f0de8cc0368"
+      abi: Unipeer
+      startBlock: 7830842
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - AdminTransferred
+        - AppealContribution
+        - Dispute
+        - Evidence
+        - FeeWithdrawn
+        - HasPaidAppealFee
+        - MetaEvidence
+        - OrderBuy
+        - OrderComplete
+        - OrderPaid
+        - OrderResolved
+        - PaymentMethodTokenDisabled
+        - PaymentMethodTokenEnabled
+        - PaymentMethodUpdate
+        - Ruling
+        - SellerDeposit
+        - SellerPaymentMethod
+        - SellerWithdraw
+        - TimedOutByBuyer
+        - TimedOutBySeller
+      abis:
+        - name: Unipeer
+          file: ./abis/Unipeer.json
+      eventHandlers:
+        - event: AdminTransferred(indexed address,indexed address)
+          handler: handleAdminTransferred
+        - event: AppealContribution(indexed uint256,uint8,address,uint256)
+          handler: handleAppealContribution
+        - event: Dispute(indexed address,indexed uint256,uint256,uint256)
+          handler: handleDispute
+        - event: Evidence(indexed address,indexed uint256,indexed address,string)
+          handler: handleEvidence
+        - event: FeeWithdrawn(uint256)
+          handler: handleFeeWithdrawn
+        - event: HasPaidAppealFee(indexed uint256,uint8)
+          handler: handleHasPaidAppealFee
+        - event: MetaEvidence(indexed uint256,string)
+          handler: handleMetaEvidence
+        - event: OrderBuy(indexed uint256,indexed address,indexed address,uint16,string,address,uint256,uint256,uint256)
+          handler: handleOrderBuy
+        - event: OrderComplete(indexed uint256)
+          handler: handleOrderComplete
+        - event: OrderPaid(indexed uint256)
+          handler: handleOrderPaid
+        - event: OrderResolved(indexed uint256)
+          handler: handleOrderResolved
+        - event: PaymentMethodTokenDisabled(indexed uint16,address)
+          handler: handlePaymentMethodTokenDisabled
+        - event: PaymentMethodTokenEnabled(indexed uint16,address)
+          handler: handlePaymentMethodTokenEnabled
+        - event: PaymentMethodUpdate(indexed uint16,string,uint256)
+          handler: handlePaymentMethodUpdate
+        - event: Ruling(indexed address,indexed uint256,uint256)
+          handler: handleRuling
+        - event: SellerDeposit(indexed address,address,uint256)
+          handler: handleSellerDeposit
+        - event: SellerPaymentMethod(indexed address,uint16,string,uint256)
+          handler: handleSellerPaymentMethod
+        - event: SellerWithdraw(indexed address,address,uint256)
+          handler: handleSellerWithdraw
+        - event: TimedOutByBuyer(indexed uint256)
+          handler: handleTimedOutByBuyer
+        - event: TimedOutBySeller(indexed uint256)
+          handler: handleTimedOutBySeller
+      file: ./src/unipeer.ts

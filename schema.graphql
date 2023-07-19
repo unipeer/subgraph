@@ -1,0 +1,192 @@
+type AdminTransferred @entity(immutable: true) {
+  id: Bytes!
+  previousAdmin: Bytes! # address
+  newAdmin: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type AppealContribution @entity(immutable: true) {
+  id: Bytes!
+  _orderID: BigInt! # uint256
+  _party: Int! # uint8
+  _contributor: Bytes! # address
+  _amount: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Dispute @entity(immutable: true) {
+  id: Bytes!
+  _arbitrator: Bytes! # address
+  _disputeID: BigInt! # uint256
+  _metaEvidenceID: BigInt! # uint256
+  _evidenceGroupID: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Evidence @entity(immutable: true) {
+  id: Bytes!
+  _arbitrator: Bytes! # address
+  _evidenceGroupID: BigInt! # uint256
+  _party: Bytes! # address
+  _evidence: String! # string
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type FeeWithdrawn @entity(immutable: true) {
+  id: Bytes!
+  amount: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type HasPaidAppealFee @entity(immutable: true) {
+  id: Bytes!
+  _orderID: BigInt! # uint256
+  _party: Int! # uint8
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type MetaEvidence @entity(immutable: true) {
+  id: Bytes!
+  _metaEvidenceID: BigInt! # uint256
+  _evidence: String! # string
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type OrderBuy @entity(immutable: true) {
+  id: Bytes!
+  orderID: BigInt! # uint256
+  buyer: Bytes! # address
+  seller: Bytes! # address
+  paymentID: Int! # uint16
+  paymentAddress: String! # string
+  token: Bytes! # address
+  amount: BigInt! # uint256
+  feeAmount: BigInt! # uint256
+  sellerFeeAmount: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type OrderComplete @entity(immutable: true) {
+  id: Bytes!
+  orderID: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type OrderPaid @entity(immutable: true) {
+  id: Bytes!
+  orderID: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type OrderResolved @entity(immutable: true) {
+  id: Bytes!
+  orderID: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type PaymentMethodTokenDisabled @entity(immutable: true) {
+  id: Bytes!
+  paymentID: Int! # uint16
+  token: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type PaymentMethodTokenEnabled @entity(immutable: true) {
+  id: Bytes!
+  paymentID: Int! # uint16
+  token: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type PaymentMethodUpdate @entity(immutable: true) {
+  id: Bytes!
+  paymentID: Int! # uint16
+  paymentName: String! # string
+  metaEvidenceID: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Ruling @entity(immutable: true) {
+  id: Bytes!
+  _arbitrator: Bytes! # address
+  _disputeID: BigInt! # uint256
+  _ruling: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type SellerDeposit @entity(immutable: true) {
+  id: Bytes!
+  sender: Bytes! # address
+  token: Bytes! # address
+  amount: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type SellerPaymentMethod @entity(immutable: true) {
+  id: Bytes!
+  sender: Bytes! # address
+  paymentID: Int! # uint16
+  paymentAddress: String! # string
+  feeRate: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type SellerWithdraw @entity(immutable: true) {
+  id: Bytes!
+  sender: Bytes! # address
+  token: Bytes! # address
+  amount: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type TimedOutByBuyer @entity(immutable: true) {
+  id: Bytes!
+  orderID: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type TimedOutBySeller @entity(immutable: true) {
+  id: Bytes!
+  orderID: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
