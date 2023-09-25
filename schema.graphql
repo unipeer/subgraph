@@ -71,7 +71,7 @@ type OrderBuy @entity(immutable: true) {
   orderID: BigInt! # uint256
   buyer: Bytes! # address
   seller: Bytes! # address
-  paymentID: Int! # uint16
+  paymentID: BigInt! # uint256
   paymentAddress: String! # string
   token: Bytes! # address
   amount: BigInt! # uint256
@@ -108,7 +108,7 @@ type OrderResolved @entity(immutable: true) {
 
 type PaymentMethodTokenDisabled @entity(immutable: true) {
   id: Bytes!
-  paymentID: Int! # uint16
+  paymentID: BigInt! # uint256
   token: Bytes! # address
   blockNumber: BigInt!
   blockTimestamp: BigInt!
@@ -117,7 +117,7 @@ type PaymentMethodTokenDisabled @entity(immutable: true) {
 
 type PaymentMethodTokenEnabled @entity(immutable: true) {
   id: Bytes!
-  paymentID: Int! # uint16
+  paymentID: BigInt! # uint256
   token: Bytes! # address
   blockNumber: BigInt!
   blockTimestamp: BigInt!
@@ -126,7 +126,7 @@ type PaymentMethodTokenEnabled @entity(immutable: true) {
 
 type PaymentMethodUpdate @entity(immutable: true) {
   id: Bytes!
-  paymentID: Int! # uint16
+  paymentID: BigInt! # uint256
   paymentName: String! # string
   metaEvidenceID: BigInt! # uint256
   blockNumber: BigInt!
@@ -157,7 +157,7 @@ type SellerDeposit @entity(immutable: true) {
 type SellerPaymentMethod @entity(immutable: true) {
   id: Bytes!
   sender: Bytes! # address
-  paymentID: Int! # uint16
+  paymentID: BigInt! # uint256
   paymentAddress: String! # string
   feeRate: BigInt! # uint256
   blockNumber: BigInt!
